@@ -20,8 +20,9 @@
         <activity android:name=".view.ForgetPassActivity" />
         <activity android:name=".view.ForgetPass2Activity" />
         <activity android:name=".view.PersonDetailActivity" />
-        <activity android:name=".view.SettingsActivity"></activity>
-        <activity android:name=".view.FeedBackActivity"></activity>
+        <activity android:name=".view.SettingsActivity" />
+        <activity android:name=".view.FeedBackActivity" />
+        <activity android:name=".view.GuanZhuActivity"></activity>
     </application>
 
 </manifest>
