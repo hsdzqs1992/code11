@@ -5,8 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.astuetz.PagerSlidingTabStrip;
 import com.zhuye.hougong.R;
 
 /**
@@ -15,9 +16,10 @@ import com.zhuye.hougong.R;
 
 public class MyToolbar extends Toolbar {
 
-    public ImageView homeLeftIcon;
+    public TextView homeLeftIcon;
 
-    public ImageView homeRightIcon;
+    public TextView homeRightIcon;
+    public PagerSlidingTabStrip tabs;
 
     public MyToolbar(Context context) {
         this(context, null);
@@ -33,6 +35,7 @@ public class MyToolbar extends Toolbar {
         View view = View.inflate(context, R.layout.toolbar, null);
         homeLeftIcon = view.findViewById(R.id.home_left_icon);
         homeRightIcon = view.findViewById(R.id.home_right_icon);
+        tabs = view.findViewById(R.id.tabs);
         addView(view);
     }
 

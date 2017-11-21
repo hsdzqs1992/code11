@@ -1,11 +1,11 @@
 package com.zhuye.hougong;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
@@ -32,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
     private List<String> tabnames = new ArrayList<>();
     private  List<Class> tabfragment = new ArrayList<>();
+    private  List<Integer> tabimage = new ArrayList<>();
 
     //private String[]  tabnames = new String("");
+    public Typeface typeface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
         tabfragment.add( MeFragment.class);
 
 
+        tabimage.add(R.string.video);
+        tabimage.add(R.string.paihang);
+        tabimage.add(R.string.find);
+        tabimage.add(R.string.message);
+        tabimage.add(R.string.me);
 
         //初始化view
         initView();
@@ -71,10 +78,14 @@ public class MainActivity extends AppCompatActivity {
 
         homeFragmenttabhost.setup(this,getSupportFragmentManager(),R.id.home_framelayout);
 
+        Typeface typeface = Typeface.createFromAsset(getAssets(),"iconfont.ttf");
         for(int i = 0; i<5;i++){
             View v= View.inflate(this,R.layout.tabview,null);
-            ImageView tabiv = v.findViewById(R.id.tab_view);
-            tabiv.setImageResource(R.mipmap.ic_launcher);
+            TextView tabiv = v.findViewById(R.id.tab_view);
+            //tabiv.setImageResource(R.mipmap.ic_launcher);
+            tabiv.setText(tabimage.get(i));
+            //tabiv.setTextSize();
+            tabiv.setTypeface(typeface);
             TextView tv = v.findViewById(R.id.tab_tv);
             tv.setText(tabnames.get(i));
 

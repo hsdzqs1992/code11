@@ -6,6 +6,9 @@
     <color name="paihang_bg_start">#77b7f5</color>
     <color name="paihang_bg_end">#8083ec</color>
     <color name="m_toolbar">#4a4541</color>
+    <color name="translate">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="course_name">#000000</color>
 
 
 </resources>

@@ -1,21 +1,17 @@
 package com.zhuye.hougong.fragment;
 
+import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
-import com.youth.banner.Banner;
+import com.zhuye.hougong.MainActivity;
 import com.zhuye.hougong.R;
 import com.zhuye.hougong.base.BaseFragment;
 import com.zhuye.hougong.bean.HomeBanner;
-import com.zhuye.hougong.contants.Contants;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.zhuye.hougong.weidgt.MyToolbar;
 
 /**
  * Created by zzzy on 2017/11/20.
@@ -23,15 +19,40 @@ import java.util.List;
 
 public class HomeFragment extends BaseFragment {
 
-    private Banner banner;
+
+
+
+
+    private MyToolbar myToolbar;
+    private ViewPager mviewpager;
 
     @Override
     protected void initView() {
 
 
-        banner= rootView.findViewById(R.id.home_banner);
+
+        //Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(),"iconfont.ttf");
+        mviewpager = rootView.findViewById(R.id.home_viewpager);
+        myToolbar = rootView.findViewById(R.id.home_toolbar);
+
+        initToolBar();
+//        mviewpager.setAdapter(new HomePagerAdapter(getActivity().getSupportFragmentManager()));
+//        myToolbar.tabs.setViewPager(mviewpager);
+
+
+
+
 
     }
+
+    private void initToolBar() {
+
+        myToolbar.homeLeftIcon.setText(R.string.huangguan);
+        myToolbar.homeLeftIcon.setTypeface(((MainActivity)getActivity()).typeface);
+        myToolbar.homeRightIcon.setText(R.string.loudou);
+        myToolbar.homeRightIcon.setTypeface(((MainActivity)getActivity()).typeface);
+    }
+
 
     @Override
     protected int getResId() {
@@ -42,6 +63,8 @@ public class HomeFragment extends BaseFragment {
     protected void initData() {
         super.initData();
 
+
+
         OkGo.<String>post("http://192.168.1.102/gong/index.php/home/hall/lunbo")
                 .tag(getActivity())
                 .execute(new StringCallback() {
@@ -51,21 +74,15 @@ public class HomeFragment extends BaseFragment {
                         Gson gson = new Gson();
                         HomeBanner homeBanner = gson.fromJson(response.body(), HomeBanner.class);
                         Log.d("------",homeBanner.toString());
-                        List url = new ArrayList();
-                        url.add(Contants.BASE_URL+homeBanner.getData().get(0).getImg());
-                        url.add(Contants.BASE_URL+homeBanner.getData().get(1).getImg());
-                        url.add(Contants.BASE_URL+homeBanner.getData().get(2).getImg());
-                        ImageView iv = new ImageView(getActivity());
-                        Glide.with(getActivity()).load(url.get(0)).into(iv);
-                        List ivs = new ArrayList();
-                        ivs.add(iv);
-                        banner.setImages(ivs);
+
+
+
                     }
 
                     @Override
                     public void onError(Response<String> response) {
                         super.onError(response);
-                        Log.d("------",response.body());
+                      //Log.d("------",response.body());
                     }
                 });
 

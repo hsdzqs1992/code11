@@ -17,7 +17,7 @@ import butterknife.Unbinder;
 public abstract class BaseFragment extends Fragment {
 
 
-    protected View rootView;
+    public View rootView;
 
 
     Unbinder unbinder;
