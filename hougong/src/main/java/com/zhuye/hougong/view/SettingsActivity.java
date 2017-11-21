@@ -1,5 +1,6 @@
 package com.zhuye.hougong.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -52,8 +53,11 @@ public class SettingsActivity extends AppCompatActivity {
             case R.id.stting_heimingdan:
                 break;
             case R.id.stting_yinsehn:
+                onYinShen();
+                
                 break;
             case R.id.stting_feedback:
+                startActivity(new Intent(SettingsActivity.this,FeedBackActivity.class));
                 break;
             case R.id.setting_qingchu:
                 break;
@@ -64,5 +68,10 @@ public class SettingsActivity extends AppCompatActivity {
             case R.id.setting_logout:
                 break;
         }
+    }
+
+    //处理隐身的逻辑
+    private void onYinShen() {
+
     }
 }

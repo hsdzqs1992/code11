@@ -22,5 +22,7 @@ public class Contants {
     public static final String feedback = BASE_URL+"/index.php/home/user/feedback";
     //修改用户头像
     public static final String user_face = BASE_URL+"/index.php/home/user/face";
+    //用户隐身
+    public static final String stealth = BASE_URL+"/index.php/home/user/stealth";
 
 }
